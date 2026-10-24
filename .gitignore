@@ -1,16 +1,20 @@
-# ===== 未入库内容（第三方资产 / 含 UGC 的截图与快照，本地留存）=====
+# Site originals and captures that stay on the collecting machine:
+# CSS/font/icon/image downloads, page screenshots (contain user content), per-page style dumps
 reference/
 screenshots/*
 !screenshots/tokens-preview.png
 data/
 
-# 采集脚本产生的临时浏览器配置目录
+# Throwaway browser profiles created by the crawler
 tools/*profile*/
 tools/edge-profile/
 tools/q[0-9]-*/
 tools/DevToolsActivePort
 
-# 凭据：永远不要提交
+# Local-only helper scripts
+tools/_local/
+
+# Credentials
 *.token
 token
 token.txt
@@ -18,24 +22,21 @@ token.txt
 .env.*
 .git-credentials
 
-# 日志与临时输出
+# Logs and scratch output
 *.log
 tools/probe-*.js
 tools/probe*.png
 data/_*.png
 *_backup*
 
-# 依赖
+# Dependencies
 node_modules/
 package-lock.json
 
-# 编辑器与系统
+# Editors and OS
 .DS_Store
 Thumbs.db
 desktop.ini
 .idea/
 .vscode/
 *.swp
-
-# 一次性整理脚本，只在本地用
-tools/_local/
