@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>dao3.fun 设计令牌预览 · tokens.css 自检</title>
+<link rel="stylesheet" href="../tokens/tokens.css">
+<style>
+  body { background: var(--dao-gray-900); }
+  .wrap { max-width: 1136px; margin: 0 auto; padding: 48px 24px 96px; }
+  h1 { font-size: var(--dao-text-4xl); line-height: var(--dao-lh-4xl); font-weight: var(--dao-weight-bold); margin: 0 0 8px; }
+  h2 { font-size: var(--dao-text-2xl); line-height: var(--dao-lh-2xl); font-weight: var(--dao-weight-bold); margin: 56px 0 16px; padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,.1); }
+  p.lead { font-size: var(--dao-text-sm); color: var(--dao-white-60); margin: 0 0 8px; }
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
+  .sw { border-radius: var(--dao-radius-lg); overflow: hidden; border: 1px solid rgba(255,255,255,.1); }
+  .sw i { display: block; height: 64px; }
+  .sw b, .sw span { display: block; padding: 8px 12px; font-size: 12px; font-weight: 500; font-style: normal; font-family: inherit; }
+  .sw b { color: var(--dao-white); }
+  .sw span { color: var(--dao-white-60); padding-top: 0; }
+  .row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+  .type-row { display: flex; align-items: baseline; gap: 24px; padding: 12px 0; border-bottom: 1px dashed rgba(255,255,255,.08); }
+  .type-row code { font-size: 12px; color: var(--dao-white-35); width: 190px; flex: none; font-family: ui-monospace, Consolas, monospace; }
+  .panel { background: var(--dao-surface-08); border: 1px solid rgba(255,255,255,.1); border-radius: var(--dao-radius-lg); padding: 24px; }
+  .grid4 { display: grid; grid-template-columns: repeat(4, 276px); gap: 16px; }
+  .rail-demo { display: inline-flex; flex-direction: column; gap: 12px; background: var(--dao-gray-800); padding: 16px 12px; border-radius: var(--dao-radius-lg); }
+  .rail-demo .dao-rail__item { margin-top: 0; width: 224px; }
+  .modal-demo { position: static; width: 512px; }
+  .cover { background: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), conic-gradient(from 40deg, #2b6cb0, #38a169, #d69e2e, #e53e3e, #2b6cb0); }
+  .cover2 { background: #000 radial-gradient(circle at 50% 45%, #6b46c1 0 18%, #2b6cb0 40%, #000 75%); }
+  .note { font-size: 12px; color: var(--dao-white-35); margin-top: 12px; }
+</style>
+</head>
+<body class="dao-body">
+<div class="wrap">
+  <h1>神奇代码岛 · 设计令牌预览</h1>
+  <p class="lead">本页只用 <code style="color:#ffdb00">assets/tokens.css</code> 的变量与类构建，用于自检令牌落地效果。数值全部来自 dao3.fun 线上 CSS 与渲染实测。</p>
+
+  <h2>1. 品牌黄（主色）</h2>
+  <div class="swatches" id="brand"></div>
+
+  <h2>2. 中性灰阶 · 页面骨架</h2>
+  <div class="swatches" id="gray"></div>
+
+  <h2>3. 白透阶（暗色下的文字层级）</h2>
+  <div class="panel">
+    <div style="background:#0d0d0d;padding:16px;border-radius:8px">
+      <div class="dao-t-h3">100% 主文字 · 卡片标题</div>
+      <div class="dao-t-body" style="color:var(--dao-white-80)">80% 次强调</div>
+      <div class="dao-t-meta">60% 次要正文（作者名 / 简介 / 时间）— 实测最高频层级</div>
+      <div class="dao-t-meta" style="color:var(--dao-white-35)">35% 弱化标签 · 对比度 3.17，仅达 AA-large</div>
+    </div>
+    <div style="background:#262626;padding:16px;border-radius:8px;margin-top:12px">
+      <div class="dao-t-meta">60% 白 on #262626 = 6.38:1</div>
+    </div>
+    <div style="background:#404040;padding:16px;border-radius:8px;margin-top:12px">
+      <div class="dao-t-meta">60% 白 on #404040 = 4.92:1（小字下限）</div>
+    </div>
+  </div>
+
+  <h2>4. 功能色</h2>
+  <div class="swatches" id="func"></div>
+
+  <h2>5. 字号阶梯</h2>
+  <div class="panel" id="type"></div>
+
+  <h2>6. 按钮</h2>
+  <div class="row">
+    <button class="dao-btn dao-btn--light">登录</button>
+    <button class="dao-btn dao-btn--brand" style="min-width:200px;height:48px">立即下载</button>
+    <button class="dao-btn dao-btn--ghost" style="min-width:auto">幽灵按钮</button>
+    <button class="dao-btn dao-btn--light dao-btn--lg">登录页主按钮 496×56</button>
+  </div>
+  <div class="note">hover 试：品牌按钮转 <code>#D9B500</code>；顶栏登录按钮 128×32 / 圆角 9999 / 12px 700。</div>
+
+  <h2>7. 输入框</h2>
+  <div class="row">
+    <input class="dao-input" placeholder="搜索地图/模型名">
+    <input class="dao-input dao-input--lg" placeholder="手机号">
+  </div>
+
+  <h2>8. 地图卡（276×378，1440 视口 4 列）</h2>
+  <div class="grid4" id="cards"></div>
+  <div class="note">封面 1:1，hover 时 <code>scale(1.1)</code>；圆角 8；面 <code>rgba(255,255,255,.08)</code>；内边距 16。</div>
+
+  <h2>9. 左侧导航导轨（56 → 256 展开态）</h2>
+  <div class="rail-demo">
+    <div class="dao-rail__item is-current">▶ 地图展厅</div>
+    <div class="dao-rail__item">◎ 模型展厅</div>
+    <div class="dao-rail__item is-active-page">✎ 创作中心</div>
+    <div class="dao-rail__item">▷ 直播中心</div>
+    <div class="dao-rail__item">◑ 神岛实验室</div>
+  </div>
+  <div class="note">项高 48 / 圆角 8 / 内边距 0 16 / 间距 12；当前页 <code>#404040</code>，创作中心选中态反白。</div>
+
+  <h2>10. 分类磁贴与胶囊</h2>
+  <div class="dao-tile-grid" style="max-width:1136px">
+    <div class="dao-tile cover">跑酷</div><div class="dao-tile cover">休闲</div>
+    <div class="dao-tile cover">竞速</div><div class="dao-tile cover">竞技</div>
+    <div class="dao-tile cover">创造</div><div class="dao-tile cover">模拟经营</div>
+    <div class="dao-tile cover">角色扮演</div><div class="dao-tile cover">生存冒险</div>
+    <div class="dao-tile cover">解密探险</div><div class="dao-tile cover">其他</div>
+  </div>
+  <div class="row" style="margin-top:16px">
+    <span class="dao-chip">跑酷</span><span class="dao-chip">休闲</span><span class="dao-chip">竞速</span><span class="dao-chip">竞技</span>
+  </div>
+
+  <h2>11. 公告条 + 登录引导气泡</h2>
+  <div class="row" style="align-items:flex-start">
+    <div style="flex:1;min-width:420px;background:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),conic-gradient(from 210deg,#2b6cb0,#38a169,#d69e2e,#e53e3e,#2b6cb0);border-radius:12px;padding:12px 16px;display:flex;gap:12px">
+      <i style="flex:none;width:3px;height:44px;background:#f7b500;border-radius:2px"></i>
+      <div>
+        <div style="font-size:16px;font-weight:700;color:#fff2cf">关于神奇代码岛停止运营的公告</div>
+        <div class="dao-t-meta" style="margin-top:4px">神奇代码岛将于 2026 年 9 月 30 日 正式停止运营。</div>
+      </div>
+    </div>
+    <div class="dao-bubble">
+      <div class="dao-bubble__title">登录畅玩海量地图</div>
+      <ul class="dao-bubble__list" style="margin:6px 0 10px;padding-left:18px">
+        <li>和好友一起组队开黑</li><li>加入创作军团，搭建自己的神奇世界</li><li>新用户注册，免费领取精美皮肤</li>
+      </ul>
+      <button class="dao-btn dao-btn--light" style="width:100%">登录</button>
+    </div>
+  </div>
+
+  <h2>12. 登录弹窗</h2>
+  <div class="dao-modal modal-demo">
+    <div class="row" style="gap:32px;justify-content:center;margin-bottom:24px">
+      <div class="dao-modal__tab is-active">验证码登录</div>
+      <div class="dao-modal__tab">密码登录</div>
+    </div>
+    <input class="dao-input dao-input--lg" style="width:100%;margin-bottom:16px" placeholder="手机号">
+    <input class="dao-input dao-input--lg" style="width:100%;margin-bottom:12px" placeholder="6位数验证码">
+    <div class="dao-t-meta" style="margin-bottom:16px">登录即代表同意《用户协议》《隐私政策》</div>
+    <button class="dao-btn dao-btn--light dao-btn--lg" style="width:100%;min-width:0">登录</button>
+  </div>
+
+  <h2>13. 页脚</h2>
+  <div class="dao-footer" style="border-radius:var(--dao-radius-lg)">
+    <div>
+      <div class="dao-footer__brand">多人联机编程创作平台</div>
+      <div class="dao-footer__legal" style="margin-top:16px">版权所有 © 2026 深圳奇梦岛科技有限公司</div>
+      <div class="dao-footer__legal">粤公网安备 44030602003657号 ｜ 粤ICP备2022075904号-3 ｜ 软著2021SR0654199</div>
+    </div>
+    <div class="row">
+      <span class="dao-footer__social">♪</span><span class="dao-footer__social">◎</span>
+      <span class="dao-footer__social">▣</span><span class="dao-footer__social">✦</span>
+    </div>
+  </div>
+
+  <h2>14. 动效</h2>
+  <div class="panel">
+    <div class="dao-t-body">统一曲线 <code style="color:#ffdb00">cubic-bezier(0.4, 0, 0.2, 1)</code>，三档时长 150 / 200 / 300ms。</div>
+    <div class="dao-t-meta" style="margin-top:8px">导航变色 200ms · 顶栏背景 300ms · 封面 hover scale(1.1) 300ms · 卡片简介 max-height 0→48px 300ms ease-in-out · 全局隐藏滚动条</div>
+    <div style="margin-top:16px;width:64px;height:64px;border-radius:8px;background:#ffdb00;box-shadow:0 0 16px #ffdb00, inset 0 0 8px #ffdb00;transition:transform var(--dao-dur-slow) var(--dao-ease)" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'"></div>
+    <div class="note">左：品牌光晕 <code>0 0 16px #FFDB00, inset 0 0 8px #FFDB00</code>（悬停看 scale）。</div>
+  </div>
+</div>
+
+<script>
+const el = (t) => document.createElement(t);
+function swatch(target, list) {
+  const box = document.getElementById(target);
+  for (const [name, value, note] of list) {
+    const s = el('div'); s.className = 'sw';
+    const i = el('i'); i.style.background = value;
+    if (value.includes('rgba')) i.style.background = `linear-gradient(${value}, ${value}), repeating-conic-gradient(#333 0% 25%, #555 0% 50%) 0 0 / 16px 16px`;
+    const b = el('b'); b.textContent = name;
+    const sp = el('span'); sp.textContent = (value.length > 26 ? value.slice(0, 26) + '…' : value) + (note ? ' · ' + note : '');
+    s.append(i, b, sp); box.append(s);
+  }
+}
+swatch('brand', [
+  ['brand-200', '#fffb7a'], ['brand-300', '#fff352'], ['brand-400', '#ffea29'],
+  ['brand-500 主色', '#ffdb00'], ['brand-600 hover', '#d9b500'], ['brand-700 描边', '#b38f00'],
+  ['ARENA 橙', '#ff7d00'], ['公告暖白', '#fff2cf'],
+]);
+swatch('gray', [
+  ['gray-100', '#fafafa'], ['gray-200', '#ebebeb'], ['gray-300', '#d9d9d9'], ['gray-400', '#bfbfbf'],
+  ['gray-500', '#8c8c8c'], ['gray-600', '#595959'], ['gray-700 实面', '#404040'],
+  ['gray-800 页脚/导轨', '#262626'], ['gray-900 页面底', '#0d0d0d'],
+  ['登录页底', '#383838'], ['surface .08 卡面', 'rgba(255,255,255,.08)'], ['scrim 遮罩', 'rgba(0,0,0,.8)'],
+]);
+swatch('func', [
+  ['danger-400', '#f65252'], ['danger-500', '#f53f3f'], ['danger-600', '#cf2b31'],
+  ['success-400', '#78c95d'], ['success-500', '#56bb35'], ['info-400', '#5273ff'], ['info-500', '#3f63ff'],
+  ['实验室主色', '#1473e6'],
+]);
+const ramp = [
+  ['text-xs 12/18', 'var(--dao-text-xs)', 'var(--dao-lh-xs)', '作者名 · 简介 · 统计 · 时间'],
+  ['text-sm 14/20', 'var(--dao-text-sm)', 'var(--dao-lh-sm)', '卡片标题 · 正文（最高频）'],
+  ['text-base 16/24', 'var(--dao-text-base)', 'var(--dao-lh-base)', '导航 · 区块标题'],
+  ['text-lg 18/28', 'var(--dao-text-lg)', 'var(--dao-lh-lg)', ''],
+  ['text-xl 20/30', 'var(--dao-text-xl)', 'var(--dao-lh-xl)', ''],
+  ['text-2xl 24/36', 'var(--dao-text-2xl)', 'var(--dao-lh-2xl)', '页脚品牌语 · 弹窗 tab'],
+  ['text-4xl 32/48', 'var(--dao-text-4xl)', 'var(--dao-lh-4xl)', 'banner 主标题'],
+  ['text-7xl 48/72', 'var(--dao-text-7xl)', 'var(--dao-lh-7xl)', '创作中心大标题'],
+];
+const tp = document.getElementById('type');
+for (const [name, size, lh, note] of ramp) {
+  const r = el('div'); r.className = 'type-row';
+  const c = el('code'); c.textContent = name;
+  const t = el('div'); t.textContent = '神岛代码 Aa 1.84M'; t.style.cssText = `font-size:${size};line-height:${lh};font-weight:700`;
+  const n = el('div'); n.className = 'dao-t-meta'; n.textContent = note; n.style.marginLeft = 'auto';
+  r.append(c, t, n); tp.append(r);
+}
+const cards = document.getElementById('cards');
+const data = [
+  ['源码精灵', '吉吉喵', 'Alpha版本', '1.84M', '3.25K', '24.39K'],
+  ['武器试验场', '迷失冷光', 'QQ交流群：748875150 兑换码频率你知道的', '1.58M', '3.26K', '13.07K'],
+  ['贪婪之岛', 'MOYO', '地牢肉鸽冒险游戏，贪婪之岛正式上线！第二章：娜迦遗迹', '1.21M', '1.9K', '12.13K'],
+  ['恒光学院', '天狼星Sirius.', '泥嚎！这是一个从内到外都非常温馨的地图！', '1.06M', '2.8K', '5.65K'],
+];
+for (const [title, author, desc, play, like, view] of data) {
+  const c = el('div'); c.className = 'dao-card-map';
+  c.innerHTML = `
+    <div style="position:relative;display:flex;justify-content:flex-end;gap:8px;font-size:12px;margin-bottom:8px">
+      <span>▶ ${play}</span><span>♡ ${like}</span><span>◎ ${view}</span></div>
+    <div class="dao-card-map__cover cover2"></div>
+    <div style="display:flex;gap:16px;align-items:center;margin-top:16px">
+      <div style="width:36px;height:36px;border-radius:9999px;background:linear-gradient(135deg,#ffdb00,#f53f3f);flex:none"></div>
+      <div style="min-width:0;flex:1">
+        <div class="dao-card-map__title">${title}</div>
+        <div class="dao-card-map__author">${author}</div>
+      </div>
+    </div>
+    <div class="dao-card-map__desc">${desc}</div>`;
+  cards.append(c);
+}
+</script>
+</body>
+</html>

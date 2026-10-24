@@ -1,0 +1,304 @@
+/* ============================================================
+   dao3.fun（神奇代码岛）设计令牌 · 可直接引入使用
+   来源：站点 CSS 源文件 + 无头 Edge 1440×900 渲染后 getComputedStyle 实测
+   抓取时间：2026-10-24    对应构建：Next.js buildId fC5BvXRxdKi7_GBL0GgYj
+   全部数值均为实测值，非推测；注释里标出证据来源。
+   ============================================================ */
+
+:root {
+  /* ---------- 品牌黄（主色） ---------- */
+  --dao-brand-200: #fffb7a;   /* .text-yellow-200 */
+  --dao-brand-300: #fff352;   /* .from-yellow-300 */
+  --dao-brand-400: #ffea29;   /* .bg-yellow-400 / .to-base-400 */
+  --dao-brand-500: #ffdb00;   /* 主色：.bg-base-500 / .text-base-500 / meta 强调 */
+  --dao-brand-600: #d9b500;   /* hover / active：--anchor-hover-color */
+  --dao-brand-700: #b38f00;   /* .border-base-700 */
+
+  /* ---------- 中性灰阶（暗色主题骨架） ---------- */
+  --dao-gray-100: #fafafa;
+  --dao-gray-200: #ebebeb;
+  --dao-gray-300: #d9d9d9;
+  --dao-gray-400: #bfbfbf;
+  --dao-gray-500: #8c8c8c;
+  --dao-gray-600: #595959;
+  --dao-gray-700: #404040;    /* 占位块 / 导航 hover / 输入底 */
+  --dao-gray-800: #262626;    /* 页脚 / 侧栏导轨 / 文档页 / meta theme-color */
+  --dao-gray-900: #0d0d0d;    /* 页面主背景 */
+
+  /* ---------- 白色透明阶（暗色下的文字层级） ---------- */
+  --dao-white: rgba(255, 255, 255, 1);      /* .text-white-900 主文字 */
+  --dao-white-80: rgba(255, 255, 255, 0.8); /* .text-white-700 */
+  --dao-white-60: rgba(255, 255, 255, 0.6); /* .text-white-600 次要正文（实测 731 次） */
+  --dao-white-45: rgba(255, 255, 255, 0.45);
+  --dao-white-35: rgba(255, 255, 255, 0.35);/* 弱化标签 */
+  --dao-white-25: rgba(255, 255, 255, 0.25);
+  --dao-white-15: rgba(255, 255, 255, 0.15);
+
+  /* ---------- 黑色透明阶（亮底按钮文字） ---------- */
+  --dao-black-95: rgba(0, 0, 0, 0.95);      /* 登录按钮文字（实测 117 次） */
+  --dao-black-65: rgba(0, 0, 0, 0.65);
+  --dao-black-45: rgba(0, 0, 0, 0.45);
+  --dao-black-35: rgba(0, 0, 0, 0.35);
+  --dao-black-25: rgba(0, 0, 0, 0.25);
+
+  /* ---------- 半透明面（卡片分层靠它，不靠投影） ---------- */
+  --dao-surface-03: rgba(255, 255, 255, 0.03);
+  --dao-surface-05: rgba(255, 255, 255, 0.05);
+  --dao-surface-08: rgba(255, 255, 255, 0.08); /* .bg-w-100 默认卡片面 */
+  --dao-surface-10: rgba(255, 255, 255, 0.10); /* hover 面 */
+  --dao-surface-15: rgba(255, 255, 255, 0.15); /* .bg-w-200 强调面 */
+  --dao-surface-20: rgba(255, 255, 255, 0.20);
+  --dao-scrim: rgba(0, 0, 0, 0.8);             /* 弹窗遮罩 / 图片压暗 */
+  --dao-blur: blur(5px);                       /* --tw-backdrop-blur */
+
+  /* ---------- 功能色 ---------- */
+  --dao-danger-50: #ffece8;  --dao-danger-100: #fddcdc; --dao-danger-200: #fbaca3;
+  --dao-danger-300: #f98981; --dao-danger-400: #f65252; --dao-danger-500: #f53f3f;
+  --dao-danger-600: #cf2b31; --dao-danger-700: #a81b24; --dao-danger-800: #820e1a;
+  --dao-danger-900: #5c0914;                    /* 源：CSS 变量 --base-color-50..900 */
+  --dao-success-300: #9ad686;
+  --dao-success-400: #78c95d;
+  --dao-success-500: #56bb35;
+  --dao-info-400: #5273ff;
+  --dao-info-500: #3f63ff;
+  --dao-accent-warm: #f7b500;   /* 公告条左侧 3×44px 强调条 */
+  --dao-text-warm: #fff2cf;      /* 公告条标题暖白 */
+  --dao-arena-orange: #ff7d00;   /* 创作中心 ARENA 图标 */
+
+  /* ---------- 字体 ---------- */
+  --dao-font-sans: MiSans, Montserrat, "Microsoft YaHei", 微软雅黑, sans-serif; /* body 实测 */
+  --dao-font-mui: "Roboto", "Helvetica", "Arial", sans-serif;                   /* MUI 组件内部 */
+  --dao-font-icons: "icons";                                                    /* 86 glyph 图标字体 */
+  --dao-weight-regular: 400;
+  --dao-weight-medium: 500;   /* html{font-weight:500} 全站默认字重 */
+  --dao-weight-semibold: 600;
+  --dao-weight-bold: 700;
+
+  /* 字号阶梯（Tailwind 自定义：size/line-height 成对） */
+  --dao-text-xs: 12px;    --dao-lh-xs: 18px;   /* 作者名/简介/统计/时间 */
+  --dao-text-sm: 14px;    --dao-lh-sm: 20px;   /* 卡片标题/正文（最高频） */
+  --dao-text-base: 16px;  --dao-lh-base: 24px; /* 导航/区块标题/模型卡标题 */
+  --dao-text-lg: 18px;    --dao-lh-lg: 28px;
+  --dao-text-xl: 20px;    --dao-lh-xl: 30px;
+  --dao-text-2xl: 24px;   --dao-lh-2xl: 36px;  /* 页脚品牌语/弹窗 tab */
+  --dao-text-3xl: 28px;   --dao-lh-3xl: 42px;
+  --dao-text-4xl: 32px;   --dao-lh-4xl: 48px;  /* banner 主标题 */
+  --dao-text-5xl: 36px;   --dao-lh-5xl: 54px;
+  --dao-text-7xl: 48px;   --dao-lh-7xl: 72px;  /* 创作中心 VOXA/ARENA */
+
+  /* ---------- 间距（1–6 档被重定义，不是默认 4px 步进） ---------- */
+  --dao-sp-1: 8px;
+  --dao-sp-2: 12px;
+  --dao-sp-3: 16px;   /* 卡片内边距 / 网格间距 / 导航左右内距 */
+  --dao-sp-4: 24px;
+  --dao-sp-5: 32px;   /* 页脚内边距 / 区块间距 */
+  --dao-sp-6: 48px;
+  --dao-sp-8: 32px;   /* .w-8/.h-8 = 2rem（未覆盖，保持默认） */
+  --dao-sp-12: 48px;  /* .h-12 = 3rem（导航项高） */
+
+  /* ---------- 圆角 ---------- */
+  --dao-radius-sm: 4px;    /* .rounded（实测 843 次） */
+  --dao-radius-md: 6px;    /* .rounded-md */
+  --dao-radius-lg: 8px;    /* .rounded-lg 默认卡片圆角（实测 649 次/15 页） */
+  --dao-radius-xl: 12px;
+  --dao-radius-2xl: 16px;
+  --dao-radius-3xl: 24px;
+  --dao-radius-4xl: 32px;  /* .rounded-[32px] 创作中心大卡 */
+  --dao-radius-pill: 999px;/* 按钮（实测 382 次） */
+  --dao-radius-full: 9999px;
+
+  /* ---------- 描边与层级（暗色主题不用投影） ---------- */
+  --dao-border-light: 1px solid rgba(255, 255, 255, 0.2);
+  --dao-border-faint: 1px solid rgba(255, 255, 255, 0.1);
+  --dao-ring-10: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  --dao-ring-20: 0 0 0 1px rgba(255, 255, 255, 0.2);
+  --dao-glow-brand: 0 0 16px #ffdb00, inset 0 0 8px #ffdb00; /* --tw-shadow-color:#ffdb00 */
+
+  /* ---------- 布局 ---------- */
+  --dao-header-h: 64px;        /* 桌面 sticky 顶栏（移动端 48px） */
+  --dao-rail-w: 80px;          /* 左侧固定导轨（12 + 56 + 12） */
+  --dao-rail-nav-w: 56px;      /* 收起态导航宽度，hover 展开 256px */
+  --dao-content-max: 1136px;   /* 1440 视口下主内容列宽（lg:w-[1136px]） */
+  --dao-footer-h: 188px;
+
+  /* ---------- 动效 ---------- */
+  --dao-ease: cubic-bezier(0.4, 0, 0.2, 1); /* Material 标准曲线，全站统一 */
+  --dao-dur-fast: 150ms;
+  --dao-dur-base: 200ms;  /* 导航变色/展开 */
+  --dao-dur-slow: 300ms;  /* 顶栏背景、卡片信息展开 */
+
+  /* ---------- 断点（@media 实测出现值） ---------- */
+  --dao-bp-sm: 577px;
+  --dao-bp-md: 900px;
+  --dao-bp-lg: 961px;
+  --dao-bp-xl: 1201px;
+}
+
+/* ---------- 基础版式 ---------- */
+.dao-body {
+  margin: 0;
+  background: var(--dao-gray-900);
+  color: var(--dao-white);
+  font-family: var(--dao-font-sans);
+  font-size: var(--dao-text-base);
+  font-weight: var(--dao-weight-medium);
+  line-height: var(--dao-lh-base);
+  -webkit-font-smoothing: antialiased;
+}
+/* 站点全局隐藏滚动条（::-webkit-scrollbar{width:0;height:0}） */
+.dao-body::-webkit-scrollbar { width: 0; height: 0; display: none; }
+
+/* ---------- 文字层级 ---------- */
+.dao-t-h1 { font-size: var(--dao-text-4xl); line-height: var(--dao-lh-4xl); font-weight: var(--dao-weight-bold); color: var(--dao-white); }
+.dao-t-h2 { font-size: var(--dao-text-2xl); line-height: var(--dao-lh-2xl); font-weight: var(--dao-weight-bold); color: var(--dao-white); }
+.dao-t-h3 { font-size: var(--dao-text-base); line-height: var(--dao-lh-base); font-weight: var(--dao-weight-bold); color: var(--dao-white); }
+.dao-t-body { font-size: var(--dao-text-sm); line-height: var(--dao-lh-sm); font-weight: var(--dao-weight-medium); color: var(--dao-white); }
+.dao-t-meta { font-size: var(--dao-text-xs); line-height: var(--dao-lh-xs); font-weight: var(--dao-weight-medium); color: var(--dao-white-60); }
+.dao-t-accent { color: var(--dao-brand-500); }
+
+/* ---------- 卡片：地图卡（276×378 @1440 四列） ---------- */
+.dao-card-map {
+  box-sizing: border-box;
+  width: 276px;
+  padding: var(--dao-sp-3);
+  margin-bottom: var(--dao-sp-3);
+  background: var(--dao-surface-08);
+  border-radius: var(--dao-radius-lg);
+  color: var(--dao-white);
+  font-family: var(--dao-font-sans);
+}
+.dao-card-map__cover {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;          /* 1:1 封面 */
+  overflow: hidden;
+  border-radius: var(--dao-radius-lg);
+  background: var(--dao-gray-700);
+}
+.dao-card-map__cover img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform var(--dao-dur-slow) var(--dao-ease);
+}
+.dao-card-map:hover .dao-card-map__cover img { transform: scale(1.1); } /* .hover:scale-110 */
+.dao-card-map__title { font-size: var(--dao-text-sm); line-height: var(--dao-lh-sm); font-weight: var(--dao-weight-bold); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.dao-card-map__author { font-size: var(--dao-text-xs); line-height: var(--dao-lh-xs); color: var(--dao-white-60); }
+.dao-card-map__desc {
+  font-size: var(--dao-text-xs); line-height: var(--dao-lh-xs); color: var(--dao-white-60);
+  max-height: 48px; overflow: hidden;                                  /* .max-h-6 = 48px 两行 */
+  transition: max-height var(--dao-dur-slow) var(--dao-ease);
+}
+.dao-card-map:hover .dao-card-map__desc { max-height: 48px; }
+
+/* ---------- 按钮 ---------- */
+.dao-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 32px; padding: 7px 16px; min-width: 128px;
+  border: 0; border-radius: var(--dao-radius-full);
+  font-family: inherit; font-size: var(--dao-text-xs); font-weight: var(--dao-weight-bold);
+  cursor: pointer; transition: all var(--dao-dur-base) var(--dao-ease);
+}
+.dao-btn--light { background: var(--dao-white); color: var(--dao-black-95); }      /* 顶栏「登录」 */
+.dao-btn--brand { background: var(--dao-brand-500); color: var(--dao-black-95); }  /* 「立即下载」 */
+.dao-btn--brand:hover { background: var(--dao-brand-600); }
+.dao-btn--ghost { background: var(--dao-surface-08); color: var(--dao-white); border: var(--dao-border-light); border-radius: var(--dao-radius-lg); }
+.dao-btn--lg { height: 56px; min-width: 496px; font-size: var(--dao-text-base); }  /* 登录页主按钮 */
+
+/* ---------- 输入框 ---------- */
+.dao-input {
+  box-sizing: border-box;
+  height: 32px; width: 200px;
+  padding: 13px 13px 13px 8px;
+  background: var(--dao-surface-08);
+  border: 1px solid transparent;
+  border-radius: var(--dao-radius-sm);
+  color: var(--dao-white);
+  font-family: inherit; font-size: var(--dao-text-sm);
+}
+.dao-input::placeholder { color: var(--dao-white-35); }
+.dao-input--lg { height: 60px; width: 480px; border-radius: var(--dao-radius-lg); background: var(--dao-gray-700); }
+
+/* ---------- 左侧导航导轨 ---------- */
+.dao-rail {
+  position: fixed; left: 0; top: 0; bottom: 0; width: var(--dao-rail-w);
+  background: var(--dao-gray-800);
+  display: flex; flex-direction: column; align-items: stretch;
+  padding: 92px 12px 0;
+}
+.dao-rail__item {
+  display: flex; align-items: center;
+  height: var(--dao-sp-12); margin-top: var(--dao-sp-2); padding: 0 var(--dao-sp-3);
+  border-radius: var(--dao-radius-lg);
+  color: var(--dao-white-60);
+  font-size: var(--dao-text-base); font-weight: var(--dao-weight-bold);
+  overflow: hidden; white-space: nowrap;
+  transition: color var(--dao-dur-base) var(--dao-ease), background-color var(--dao-dur-base) var(--dao-ease);
+}
+.dao-rail__item:hover { background: var(--dao-gray-700); }
+.dao-rail__item.is-current { background: var(--dao-gray-700); color: var(--dao-white); }
+.dao-rail__item.is-active-page { background: var(--dao-white); color: var(--dao-black-95); } /* 创作中心选中态 */
+
+/* ---------- 顶栏 ---------- */
+.dao-header {
+  position: sticky; top: 0; z-index: 1000;
+  height: var(--dao-header-h);
+  display: flex; align-items: center; justify-content: space-between;
+  background: transparent;
+  transition: background-color var(--dao-dur-slow) var(--dao-ease);
+}
+.dao-header.is-scrolled { background: var(--dao-gray-900); }
+.dao-logo { width: 24px; height: 24px; color: var(--dao-white); transition: color var(--dao-dur-base) var(--dao-ease); }
+.dao-logo:hover { color: var(--dao-brand-500); }
+.dao-logo:active { color: var(--dao-brand-600); }
+
+/* ---------- 页脚 ---------- */
+.dao-footer {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  min-height: var(--dao-footer-h); padding: var(--dao-sp-5);
+  background: var(--dao-gray-800); color: var(--dao-white);
+}
+.dao-footer__brand { font-size: var(--dao-text-2xl); line-height: var(--dao-lh-2xl); font-weight: var(--dao-weight-bold); }
+.dao-footer__legal { font-size: var(--dao-text-xs); line-height: var(--dao-lh-xs); color: var(--dao-white-60); }
+.dao-footer__social {
+  width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center;
+  background: var(--dao-gray-700); border-radius: var(--dao-radius-lg);
+  transition: transform var(--dao-dur-base) var(--dao-ease);
+}
+.dao-footer__social:hover { transform: scale(1.1); }
+
+/* ---------- 弹窗 ---------- */
+.dao-overlay { position: fixed; inset: 0; background: var(--dao-scrim); backdrop-filter: var(--dao-blur); z-index: 1200; }
+.dao-modal {
+  box-sizing: border-box; width: 512px; padding: var(--dao-sp-6) var(--dao-sp-5);
+  background: var(--dao-gray-800); border-radius: var(--dao-radius-lg); color: var(--dao-white);
+}
+.dao-modal__tab { font-size: var(--dao-text-2xl); font-weight: var(--dao-weight-bold); color: var(--dao-white-35); padding-bottom: 8px; }
+.dao-modal__tab.is-active { color: var(--dao-white); border-bottom: 4px solid var(--dao-brand-500); }
+
+/* ---------- 分类磁贴 / 胶囊 ---------- */
+.dao-tile-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--dao-sp-3); }
+.dao-tile {
+  position: relative; height: 48px; border-radius: var(--dao-radius-sm);
+  border: var(--dao-border-light); overflow: hidden;
+  display: flex; align-items: center; gap: 4px; padding: 6px;
+  color: var(--dao-white); font-size: var(--dao-text-sm); font-weight: var(--dao-weight-medium);
+}
+.dao-chip {
+  height: 32px; padding: 6px; border-radius: var(--dao-radius-sm);
+  background: var(--dao-gray-800); border: var(--dao-border-light);
+  color: var(--dao-white); font-size: var(--dao-text-xs); font-weight: var(--dao-weight-medium);
+  display: inline-flex; align-items: center; gap: 4px;
+}
+
+/* ---------- 品牌黄引导气泡 ---------- */
+.dao-bubble {
+  position: relative; width: 332px; height: 160px; padding: 12px 12px 12px 21px;
+  background: var(--dao-brand-500); border-radius: var(--dao-radius-lg); color: var(--dao-black-95);
+}
+.dao-bubble__title { font-size: var(--dao-text-base); font-weight: var(--dao-weight-bold); }
+.dao-bubble__list { font-size: var(--dao-text-sm); }
+
+/* ---------- 图片上的文字压底渐变 ---------- */
+.dao-scrim-bottom { background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.6)); }
+.dao-scrim-flat { background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)); }
