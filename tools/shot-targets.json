@@ -1,0 +1,6 @@
+[
+  { "slug": "exp-detail", "mode": "desktop", "url": "https://dao3.fun/exp/experience/detail/100460930", "wait": 16000 },
+  { "slug": "search-results", "mode": "desktop", "url": "https://dao3.fun/exp/search?keyword=%E8%B7%91%E9%85%B7", "wait": 12000 },
+  { "slug": "model-category", "mode": "desktop", "url": "https://dao3.fun/exp/model/%E5%BB%BA%E7%AD%91", "wait": 12000 },
+  { "slug": "experience-category", "mode": "desktop", "url": "https://dao3.fun/exp/experience/%E7%AB%9E%E9%80%9F", "wait": 12000 }
+]
